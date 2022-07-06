@@ -9,12 +9,11 @@ import com.example.testapplication.databinding.ActivityVmTestBinding
 
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.testapplication.ui.Dialog
-import com.example.testapplication.ui.viewmodelTest.viewmodeltest.home
+import com.example.testapplication.ui.PopUpDialgoFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 
-class VmTest : AppCompatActivity(), Dialog {
+class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
     private lateinit var vmBinding : ActivityVmTestBinding
     private val model : VmTestViewModel by viewModels()
 
@@ -85,6 +84,13 @@ class VmTest : AppCompatActivity(), Dialog {
             }
         }
 
+        //팝업테스트
+
+        vmBinding.popupbtn.setOnClickListener {
+            val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
+            popUp.addListener(this)
+            supportFragmentManager.beginTransaction().add(popUp, "gkgk").commitAllowingStateLoss()
+        }
 
 
 
@@ -93,8 +99,12 @@ class VmTest : AppCompatActivity(), Dialog {
     }
 
     override fun cancel() {
+        Log.d("popupTest", "2222222222222")
+
     }
 
     override fun ok() {
+
+        Log.d("popupTest", "1111111111111")
     }
 }

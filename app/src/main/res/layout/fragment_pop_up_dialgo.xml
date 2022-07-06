@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00000000"
     tools:context=".ui.PopUpDialgoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,9 +14,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        android:background = "@drawable/layoutdesign"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.469"
-        android:background="@drawable/layoutdesign"
         android:elevation="10dp">
 
         <TextView
@@ -31,14 +32,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <Button
             android:id="@+id/textView11"
+            android:backgroundTint="#ffffff"
             android:textColor="@color/black"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:padding="10dp"
             android:gravity="center"
+            android:background="#00ff0000"
             android:text="확인"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
