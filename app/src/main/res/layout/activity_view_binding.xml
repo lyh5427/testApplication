@@ -27,7 +27,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <include
-        android:id="@+id/a"
-        layout="@layout/include"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
