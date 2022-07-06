@@ -1,34 +1,27 @@
-package com.example.testapplication.viewmodelTest
+package com.example.testapplication.ui.viewmodelTest.viewmodeltest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Adapter
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import com.example.testapplication.R
 import com.example.testapplication.databinding.ActivityVmTestBinding
 
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.testapplication.data.Test
-import com.example.testapplication.home
-import kotlinx.coroutines.MainScope
+import com.example.testapplication.ui.Dialog
+import com.example.testapplication.ui.viewmodelTest.viewmodeltest.home
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
-class VmTest : AppCompatActivity() {
+class VmTest : AppCompatActivity(), Dialog {
     private lateinit var vmBinding : ActivityVmTestBinding
     private val model : VmTestViewModel by viewModels()
 
     //리싸이클뷰 테스트
     private lateinit var recycleViewTestAdapter : RecycleViewTestAdapter
 
-    fun handleEvent(e :Event){
+    fun handleEvent(e : Event){
         when(e){
             is Event.response ->{
                 Log.d("1", "test Success")
@@ -97,5 +90,11 @@ class VmTest : AppCompatActivity() {
 
 
 
+    }
+
+    override fun cancel() {
+    }
+
+    override fun ok() {
     }
 }

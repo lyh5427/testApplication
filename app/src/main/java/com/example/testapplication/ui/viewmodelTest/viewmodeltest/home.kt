@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.ui.viewmodelTest.viewmodeltest
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentHomeBinding
-import com.example.testapplication.viewmodelTest.VmTest
-import com.example.testapplication.viewmodelTest.VmTestViewModel
+import com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTestViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +31,7 @@ class home : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        h = DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false)
+        h = DataBindingUtil.inflate(inflater, R.layout.fragment_home,container,false)
         h.vm = vmViewModel
 
         return h.root

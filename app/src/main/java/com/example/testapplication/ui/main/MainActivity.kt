@@ -1,14 +1,12 @@
-package com.example.testapplication
+package com.example.testapplication.ui.main
 
 import android.annotation.SuppressLint
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -19,10 +17,12 @@ import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.testapplication.viewmodelTest.VmTest
-import java.util.concurrent.ConcurrentNavigableMap
+import com.example.testapplication.R
+import com.example.testapplication.ui.appwebtest.PageTest
+import com.example.testapplication.ui.sharetest.ShareTest
+import com.example.testapplication.ui.ViewBindingActivity
+import com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTest
 
 class MainActivity : AppCompatActivity() {
     var IncallView : View? = null

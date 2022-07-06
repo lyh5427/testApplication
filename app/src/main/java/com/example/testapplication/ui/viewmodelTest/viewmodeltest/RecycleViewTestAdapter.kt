@@ -1,6 +1,5 @@
-package com.example.testapplication.viewmodelTest
+package com.example.testapplication.ui.viewmodelTest.viewmodeltest
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
@@ -8,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.data.Test
 import com.example.testapplication.databinding.RecyclerviewtestBinding
-import com.example.testapplication.viewmodelTest.RecycleViewTestAdapter.*
+import com.example.testapplication.ui.viewmodelTest.viewmodeltest.RecycleViewTestAdapter.*
 
 class RecycleViewTestAdapter(private val list : MutableList<Test>)
     : RecyclerView.Adapter<MyViewHolder>() {

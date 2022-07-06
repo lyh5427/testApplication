@@ -1,27 +1,31 @@
-package com.example.testapplication.viewmodelTest
+package com.example.testapplication.ui.viewmodelTest.viewmodeltest
 
 import android.annotation.SuppressLint
 import android.app.Application
 import android.util.Log
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.testapplication.data.DataRepository
 import com.example.testapplication.data.Test
-import kotlinx.coroutines.Delay
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+
+data class a (
+    val name : String ?=  ":",
+    val number : String?
+    )
 
 class VmTestViewModel(application : Application) : AndroidViewModel(application) {
     @SuppressLint("StaticFieldLeak")
 
     private var dataRepo = DataRepository()
+    private val _liveData = MutableLiveData<ArrayList<a>>()
 
     private val context = getApplication<Application>().applicationContext
-    private val _liveDataText : MutableLiveData<Int> = MutableLiveData(0)
+    private var _liveDataText : MutableLiveData<Int> = MutableLiveData(0)
     val livaDataText : LiveData<Int> get() = _liveDataText
 
     private var _stateFlow = MutableStateFlow(0)

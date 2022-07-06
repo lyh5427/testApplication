@@ -15,16 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
-            android:name=".viewmodelTest.VmTest"
+            android:name=".ui.viewmodelTest.viewmodeltest.VmTest"
             android:exported="false" />
         <activity
-            android:name=".kointest.KotinTest"
+            android:name="com.example.testapplication.data.ui.kointest.KotinTest"
             android:exported="false" />
         <activity
-            android:name=".PageTest"
+            android:name=".ui.appwebtest.PageTest"
             android:exported="false" />
         <activity
-            android:name=".ViewBindingActivity"
+            android:name=".ui.ViewBindingActivity"
             android:exported="false" />
 
         <receiver
@@ -33,7 +33,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".ShareTest"
+            android:name=".ui.sharetest.ShareTest"
             android:exported="true">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.SHARE" />
@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

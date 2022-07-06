@@ -1,15 +1,15 @@
-package com.example.testapplication
+package com.example.testapplication.ui.appwebtest
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.TableLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.testapplication.R
+import com.example.testapplication.ui.webView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 
@@ -32,8 +32,8 @@ class PageTest : AppCompatActivity() {
     }
 
     private fun setViewPager(viewPager: ViewPager) {
-        val a = webView.newInstance("1","https://www.google.com")
-        val b = webView.newInstance("1","https://www.google.com")
+        val a = webView.newInstance("1", "https://www.google.com")
+        val b = webView.newInstance("1", "https://www.google.com")
 
         val adapter = PagerTestAdapter(supportFragmentManager)
         adapter.addFrag(a,"최신피싱사례")

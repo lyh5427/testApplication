@@ -1,4 +1,4 @@
-package com.example.testapplication
+package com.example.testapplication.ui.sharetest
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -10,6 +10,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.testapplication.BroadCastReceiver
+import com.example.testapplication.R
 import com.google.firebase.dynamiclinks.ktx.dynamicLinks
 import com.google.firebase.ktx.Firebase
 

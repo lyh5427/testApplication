@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2015" />
+        <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/drawable/layoutdesign.xml" value="0.1515" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/activity_kotin_test.xml" value="0.2006340579710145" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/activity_main.xml" value="0.6666666666666666" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/activity_page_test.xml" value="0.22" />
@@ -12,6 +14,8 @@
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/activity_vm_test.xml" value="0.25" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/activity_webviewtest.xml" value="0.22" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/fragment_home.xml" value="0.20288753799392098" />
+        <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/fragment_pop_up_dialgo.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/fragment_pop_up_dialog2.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/fragment_test_web_view2.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/fragment_web_view.xml" value="0.24417426545086118" />
         <entry key="..\:/Users/lyh54/AndroidStudioProjects/testApplication/app/src/main/res/layout/include.xml" value="0.1" />

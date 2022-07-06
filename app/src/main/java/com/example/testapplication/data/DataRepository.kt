@@ -1,6 +1,6 @@
 package com.example.testapplication.data
 
-import com.example.testapplication.viewmodelTest.Event
+import com.example.testapplication.ui.viewmodelTest.viewmodeltest.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
