@@ -14,11 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
+        <service
+            android:name=".service.NotificationService"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService"/>
+            </intent-filter>
+        </service>
         <activity
             android:name=".ui.viewmodelTest.viewmodeltest.VmTest"
-            android:exported="false" />
-        <activity
-            android:name="com.example.testapplication.data.ui.kointest.KotinTest"
             android:exported="false" />
         <activity
             android:name=".ui.appwebtest.PageTest"

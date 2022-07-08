@@ -89,7 +89,21 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
             startActivity(intent)*/
         }
+
+        if(!isNotificationPermissionAllowed()){
+            startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
+        }
+
+
     }
+
+    fun isNotificationPermissionAllowed(): Boolean {
+        return NotificationManagerCompat.getEnabledListenerPackages(applicationContext)
+            .any { enabledPackageName ->
+                enabledPackageName == packageName
+            }
+    }
+
     @SuppressLint("WrongConstant")
     private fun overlaySet(){
         var flags : Int
