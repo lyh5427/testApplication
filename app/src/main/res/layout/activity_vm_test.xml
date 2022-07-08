@@ -8,6 +8,11 @@
         <variable
             name="vmTestViewModel"
             type="com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTestViewModel" />
+        <variable
+            name="test"
+            type="com.example.testapplication.data.StringTest" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -121,6 +126,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn1"
             app:layout_constraintVertical_bias="0.609" />
+
+        <Button
+            android:id="@+id/bindingTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="binding인자받기 test"
+            android:onClickListener="@{() -> vmTestViewModel.bindingTest(test)}"
+            app:layout_constraintBottom_toTopOf="@+id/frag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/popupbtn"
+            app:layout_constraintTop_toBottomOf="@+id/textbtn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

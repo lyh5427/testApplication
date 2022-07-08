@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.testapplication.data.DataRepository
+import com.example.testapplication.data.StringTest
 import com.example.testapplication.data.Test
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -47,6 +48,7 @@ class VmTestViewModel(application : Application) : AndroidViewModel(application)
     val sharedFlow = _sharedFlow
 
     private var items = ArrayList<Test>()
+
 
     init{
         items = arrayListOf(
@@ -116,4 +118,8 @@ class VmTestViewModel(application : Application) : AndroidViewModel(application)
         }
         builder.show()
     }*/
+
+    fun bindingTest(s : StringTest) {
+        Log.d("text : ", "${s.string} awwadawdaw")
+    }
 }

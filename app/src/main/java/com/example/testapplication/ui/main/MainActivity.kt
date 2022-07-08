@@ -18,56 +18,48 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationManagerCompat
+import androidx.databinding.DataBindingUtil
 import com.example.testapplication.R
+import com.example.testapplication.databinding.ActivityMainBinding
 import com.example.testapplication.ui.appwebtest.PageTest
 import com.example.testapplication.ui.sharetest.ShareTest
 import com.example.testapplication.ui.ViewBindingActivity
 import com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTest
 
 class MainActivity : AppCompatActivity() {
+    lateinit var mainBinding : ActivityMainBinding
     var IncallView : View? = null
     lateinit var conOverlay : ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val shareBtn = findViewById<Button>(R.id.sharebtn) //공유하기
-        val viewbind = findViewById<Button>(R.id.viewbinding) //뷰바인딩
-        //웹뷰
-        val webViewGO = findViewById<Button>(R.id.webViewGo)
-        val webViewSet = findViewById<ConstraintLayout>(R.id.webViewSet)
-        val webViewTest = findViewById<WebView>(R.id.webViewTest)
-        //오버레이
-        val overlayTest = findViewById<Button>(R.id.overlayTest)
-        //PageTest앱웹앱웹앱
-        val pageTest = findViewById<Button>(R.id.pagetest)
-        //ViewModel test
-        val vmbtn = findViewById<Button>(R.id.vmbtn)
-        //알림체크
-        val alrimCheckBtn = findViewById<Button>(R.id.alrimCheckbtn)
+        mainBinding = ActivityMainBinding.inflate(LayoutInflater.from(this))
 
-        overlaySet()
-        webViewTest.webViewClient = WebViewClient()
-        shareBtn.setOnClickListener{
+        //공유하기
+        mainBinding.sharebtn.setOnClickListener{
             intent = Intent(this, ShareTest::class.java)
             startActivity(intent)
         }
-
-        viewbind.setOnClickListener {
+        //뷰바인딩
+        mainBinding.viewbinding.setOnClickListener {
             intent = Intent(this, ViewBindingActivity::class.java)
             startActivity(intent)
         }
 
-        webViewGO.setOnClickListener{
-            if(webViewSet.visibility == View.GONE){
-                webViewSet.visibility = View.VISIBLE
-                webViewTest.loadUrl("https://www.naver.com/")
+        //웹뷰
+        mainBinding.webViewTest.webViewClient = WebViewClient()
+        mainBinding.webViewGo.setOnClickListener{
+            if(mainBinding.webViewSet.visibility == View.GONE){
+                mainBinding.webViewSet.visibility = View.VISIBLE
+                mainBinding.webViewTest.loadUrl("https://www.naver.com/")
             }
             else{
-                webViewSet.visibility = View.GONE
+                mainBinding.webViewSet.visibility = View.GONE
             }
         }
 
-        overlayTest.setOnClickListener {
+        //오버레이
+        overlaySet()
+        mainBinding.overlayTest.setOnClickListener {
             if(IncallView!!.visibility == View.GONE){
                 IncallView!!.visibility = View.VISIBLE
             }
@@ -76,17 +68,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        pageTest.setOnClickListener {
+        //PageTest앱웹앱웹앱
+        mainBinding.pagetest.setOnClickListener {
             val intent = Intent(this, PageTest::class.java)
             startActivity(intent)
         }
 
-        vmbtn.setOnClickListener {
+        //ViewModel test
+        mainBinding.vmbtn.setOnClickListener {
             val intent = Intent(this, VmTest::class.java)
             startActivity(intent)
         }
-
-        alrimCheckBtn.setOnClickListener {
+        //알림체크
+        mainBinding.alrimCheckbtn.setOnClickListener {
             var check = NotificationManagerCompat.from(this).areNotificationsEnabled()
             Log.d("ArimPermissionCheck", "${check}로 설정되어있습니다.")
 
