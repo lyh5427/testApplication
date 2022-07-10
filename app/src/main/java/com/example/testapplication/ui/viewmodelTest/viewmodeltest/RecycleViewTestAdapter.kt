@@ -2,6 +2,7 @@ package com.example.testapplication.ui.viewmodelTest.viewmodeltest
 
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,18 +19,25 @@ class RecycleViewTestAdapter(private val list : MutableList<Test>)
     private var positions : Int = -1
 
     inner class MyViewHolder(val binding : RecyclerviewtestBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(c : Test){
+        fun bind(c : Test, position : Int, selects : SparseBooleanArray){
             binding.data = c
-
-            itemView.setOnClickListener {
+            change(selecItems.get(position))
+            /*itemView.setOnClickListener {
                 if(positions != layoutPosition){
                     positions = layoutPosition
                     binding.textView4.text = positions.toString()
                 }
-            }
+            }*/
         }
 
-
+        fun change(b : Boolean){
+            if(b){
+                binding.textView6.visibility = View.VISIBLE
+            }
+            else{
+                binding.textView6.visibility = View.GONE
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -41,8 +49,19 @@ class RecycleViewTestAdapter(private val list : MutableList<Test>)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list[position],position, selecItems)
 
+        holder.binding.textView4.setOnClickListener {
+            if(selecItems.get(position)){
+                selecItems.delete(position)
+            }
+            else{
+                selecItems.delete(positions)
+                selecItems.put(position,true)
+            }
+            notifyItemChanged(position)
+            positions = position
+        }
     }
 
 
