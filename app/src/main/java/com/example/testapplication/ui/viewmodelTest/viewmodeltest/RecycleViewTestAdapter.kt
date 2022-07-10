@@ -1,5 +1,6 @@
 package com.example.testapplication.ui.viewmodelTest.viewmodeltest
 
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
@@ -12,7 +13,9 @@ import com.example.testapplication.ui.viewmodelTest.viewmodeltest.RecycleViewTes
 class RecycleViewTestAdapter(private val list : MutableList<Test>)
     : RecyclerView.Adapter<MyViewHolder>() {
 
-    var positions : Int = -1
+    private val selecItems : SparseBooleanArray = SparseBooleanArray()
+
+    private var positions : Int = -1
 
     inner class MyViewHolder(val binding : RecyclerviewtestBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(c : Test){
