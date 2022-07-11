@@ -1,6 +1,7 @@
 package com.example.testapplication.ui.main
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
@@ -27,12 +28,12 @@ import com.example.testapplication.ui.ViewBindingActivity
 import com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTest
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mainBinding : ActivityMainBinding
+    private lateinit var mainBinding : ActivityMainBinding
     var IncallView : View? = null
     lateinit var conOverlay : ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainBinding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
         //공유하기
         mainBinding.sharebtn.setOnClickListener{
