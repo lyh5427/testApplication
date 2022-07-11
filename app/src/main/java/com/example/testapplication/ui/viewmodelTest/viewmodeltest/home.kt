@@ -55,6 +55,7 @@ class home : Fragment(), PopUpDialgoFragment.Dialog2 {
         callback = object : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
                 Log.d("213","백프레스 성공")
+                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.frag, home2()).commit()
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)

@@ -77,7 +77,7 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
             //model.clickBtn()
         }
         //리싸이클뷰 테스트
-        supportFragmentManager.beginTransaction().replace(R.id.frag, home()).commit()
+
 
 
         //sealed Test
@@ -88,6 +88,7 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
         }
 
         //팝업테스트
+        supportFragmentManager.beginTransaction().replace(R.id.frag, home()).commit()
 
         vmBinding.popupbtn.setOnClickListener {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
