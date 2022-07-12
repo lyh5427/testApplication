@@ -21,11 +21,16 @@ import kotlinx.coroutines.launch
 class VmTestViewModel(application : Application) : AndroidViewModel(application) {
     @SuppressLint("StaticFieldLeak")
 
-    private var dataRepo = DataRepository()
-    private var _liveData = MutableLiveData<test2>(test2("공유", "성공"))
-    val liveData = _liveData
-
     private val context = getApplication<Application>().applicationContext
+
+    private var t2 : test2 = test2("공유", "바뀜")
+
+    private var dataRepo = DataRepository()
+
+    private var _liveData = MutableLiveData(t2)
+    val liveData : LiveData<test2> get() = _liveData
+
+
     private var _liveDataText : MutableLiveData<Int> = MutableLiveData(0)
     val livaDataText : LiveData<Int> get() = _liveDataText
 
@@ -126,7 +131,7 @@ class VmTestViewModel(application : Application) : AndroidViewModel(application)
 
     fun bindingTest2() {
         Log.d("text : ",  "awwadawdaw")
-        val s = test2("Awdaw", "Awd")
-        _liveData.value = s
+        t2.name = "awdawdawdaw"
+        _liveData.value = t2
     }
 }

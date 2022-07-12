@@ -29,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
 class home : Fragment(), PopUpDialgoFragment.Dialog2 {
     lateinit var h : FragmentHomeBinding
     private lateinit var callback : OnBackPressedCallback
-    private val vmViewModel : VmTestViewModel by activityViewModels<VmTestViewModel>()
+    private val vmViewModel : VmTestViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,7 +39,6 @@ class home : Fragment(), PopUpDialgoFragment.Dialog2 {
         // Inflate the layout for this fragment
         h = DataBindingUtil.inflate(inflater, R.layout.fragment_home,container,false)
         h.vm = vmViewModel
-
         h.button3.setOnClickListener {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
             popUp.addListener(this)
@@ -47,6 +46,10 @@ class home : Fragment(), PopUpDialgoFragment.Dialog2 {
         }
 
         return h.root
+    }
+    fun bindingTest2() {
+        Log.d("text : ",  "awwadawdaw")
+        vmViewModel.liveData.value!!.name ="efa"
     }
 
     override fun onAttach(context: Context) {

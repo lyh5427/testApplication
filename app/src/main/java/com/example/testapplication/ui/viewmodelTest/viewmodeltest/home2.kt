@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import com.example.testapplication.R
+import com.example.testapplication.databinding.FragmentHome2Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +25,9 @@ class home2 : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var h2 : FragmentHome2Binding
+    private val vm2 : VmTestViewModel by activityViewModels<VmTestViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -31,8 +37,12 @@ class home2 : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home2, container, false)
+        h2 = DataBindingUtil.inflate(inflater, R.layout.fragment_home2,container, false)
+        h2.button6.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.frag, home()).commit()
+        }
+
+        return h2.root
     }
 
     companion object {
