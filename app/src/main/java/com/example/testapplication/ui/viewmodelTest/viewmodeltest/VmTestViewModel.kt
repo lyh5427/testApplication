@@ -7,23 +7,23 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.testapplication.BuildConfig
 import com.example.testapplication.data.DataRepository
 import com.example.testapplication.data.StringTest
 import com.example.testapplication.data.Test
+import com.example.testapplication.data.test2
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-data class a (
-    val name : String ?=  ":",
-    val number : String?
-    )
+
 
 class VmTestViewModel(application : Application) : AndroidViewModel(application) {
     @SuppressLint("StaticFieldLeak")
 
     private var dataRepo = DataRepository()
-    private val _liveData = MutableLiveData<ArrayList<a>>()
+    private var _liveData = MutableLiveData<test2>(test2("공유", "성공"))
+    val liveData = _liveData
 
     private val context = getApplication<Application>().applicationContext
     private var _liveDataText : MutableLiveData<Int> = MutableLiveData(0)
@@ -121,5 +121,12 @@ class VmTestViewModel(application : Application) : AndroidViewModel(application)
 
     fun bindingTest(s : StringTest) {
         Log.d("text : ", "${s.string} awwadawdaw")
+        _liveData.value!!.name = "바뀜"
+    }
+
+    fun bindingTest2() {
+        Log.d("text : ",  "awwadawdaw")
+        val s = test2("Awdaw", "Awd")
+        _liveData.value = s
     }
 }

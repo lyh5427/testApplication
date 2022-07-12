@@ -20,6 +20,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
+import com.example.testapplication.BuildConfig
 import com.example.testapplication.R
 import com.example.testapplication.databinding.ActivityMainBinding
 import com.example.testapplication.ui.appwebtest.PageTest
@@ -94,7 +95,12 @@ class MainActivity : AppCompatActivity() {
         if(!isNotificationPermissionAllowed()){
             startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
         }
-
+        if(BuildConfig.DEBUG){
+            Log.d("21321","@1312")
+        }
+        else {
+            Log.d("ㅁㅈㅇㅁㅈ","ㅁㅈㅇㅁㅈㅇ")
+        }
 
     }
 

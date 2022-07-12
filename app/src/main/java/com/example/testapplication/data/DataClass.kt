@@ -9,3 +9,7 @@ data class Test(
 data class StringTest(
     var string : String
 )
+data class test2 (
+    var name : String,
+    var number : String
+)
