@@ -11,10 +11,12 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentHomeBinding
 import com.example.testapplication.ui.PopUpDialgoFragment
 import com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTestViewModel
+import kotlinx.coroutines.flow.collectLatest
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +28,19 @@ private const val ARG_PARAM2 = "param2"
  * Use the [home.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+fun handleEvent(e : Event){
+    when(e){
+        is Event.response ->{
+            Log.d("1", "test Success")
+        }
+        is Event.Err ->{
+            Log.d("2", "test Error 2312312312321")
+        }
+    }
+
+}
+
 class home : Fragment(), PopUpDialgoFragment.Dialog2 {
     lateinit var h : FragmentHomeBinding
     private lateinit var callback : OnBackPressedCallback
@@ -43,6 +58,12 @@ class home : Fragment(), PopUpDialgoFragment.Dialog2 {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
             popUp.addListener(this)
             childFragmentManager.beginTransaction().add(popUp,"awd").commit()
+        }
+
+        lifecycleScope.launchWhenStarted {
+            vmViewModel.sharedFlow.collectLatest {
+                handleEvent(it)
+            }
         }
 
         return h.root

@@ -35,6 +35,10 @@ class ShareTest : AppCompatActivity() {
         share.setOnClickListener { shareEven() }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     @SuppressLint("NewApi")
     private fun shareEven(){
         try{
