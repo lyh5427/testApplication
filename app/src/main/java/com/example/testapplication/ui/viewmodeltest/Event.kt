@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest
+package com.example.testapplication.ui.viewmodeltest
 
 import com.example.testapplication.data.Test
 

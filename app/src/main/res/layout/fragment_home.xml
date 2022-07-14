@@ -3,9 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+
+        <variable
+            name="frag"
+            type="com.example.testapplication.ui.viewmodeltest.Home" />
+
         <variable
             name="vm"
-            type="com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTestViewModel" />
+            type="com.example.testapplication.ui.viewmodeltest.VmTestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@{vm.liveData.name.toString()}"
+            android:text="@{vm.testShareFlow.name.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +47,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:text="test"
-            android:onClickListener="@{() -> vm.bindingTest2()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.942"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:text="Button"
+            android:onClickListener="@{() -> frag.test()}"
+            app:layout_constraintEnd_toStartOf="@+id/button5"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

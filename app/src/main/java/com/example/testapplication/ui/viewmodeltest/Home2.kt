@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest
+package com.example.testapplication.ui.viewmodeltest
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,7 +26,7 @@ class home2 : Fragment() {
     private var param2: String? = null
 
     lateinit var h2 : FragmentHome2Binding
-    private val vm2 : VmTestViewModel by activityViewModels<VmTestViewModel>()
+    private val vm2 : VmTestViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +39,9 @@ class home2 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         h2 = DataBindingUtil.inflate(inflater, R.layout.fragment_home2,container, false)
         h2.button6.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.frag, home()).commit()
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.frag, Home()).commit()
         }
+
 
         return h2.root
     }

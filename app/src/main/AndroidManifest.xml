@@ -23,7 +23,7 @@
             </intent-filter>
         </service>
         <activity
-            android:name=".ui.viewmodelTest.viewmodeltest.VmTest"
+            android:name=".ui.viewmodeltest.VmTest"
             android:exported="false" />
         <activity
             android:name=".ui.appwebtest.PageTest"

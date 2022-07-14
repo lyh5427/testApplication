@@ -1,7 +1,6 @@
 package com.example.testapplication.ui.main
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
@@ -13,7 +12,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
-import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.TextView
@@ -26,7 +24,7 @@ import com.example.testapplication.databinding.ActivityMainBinding
 import com.example.testapplication.ui.appwebtest.PageTest
 import com.example.testapplication.ui.sharetest.ShareTest
 import com.example.testapplication.ui.ViewBindingActivity
-import com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTest
+import com.example.testapplication.ui.viewmodeltest.VmTest
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding : ActivityMainBinding

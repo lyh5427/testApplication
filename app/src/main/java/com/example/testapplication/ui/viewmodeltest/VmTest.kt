@@ -1,6 +1,5 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest
+package com.example.testapplication.ui.viewmodeltest
 
-import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +9,6 @@ import com.example.testapplication.databinding.ActivityVmTestBinding
 
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.testapplication.data.StringTest
 import com.example.testapplication.ui.PopUpDialgoFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -39,8 +37,9 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
         vmBinding = DataBindingUtil.setContentView(this, R.layout.activity_vm_test)
         vmBinding.lifecycleOwner = this
         vmBinding.vmTestViewModel = model
-        var s = StringTest(vmBinding.textbtn.text.toString())
-        vmBinding.test = s
+
+        model.bindingTest3()
+
         vmBinding.btn1.setOnClickListener {
             model.changeStateFlow()
         }
@@ -56,6 +55,7 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
             delay(5000)
             model.stateFlow.collectLatest {
                 Log.d("b", "StateFlow : $it")
+
             }
         }
 
@@ -73,12 +73,11 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
         })
 
         vmBinding.textbtn.setOnClickListener {
-            model.sealedTest()
+            model.bindingTest2()
+            //model.sealedTest()
             //model.clickBtn()
         }
         //리싸이클뷰 테스트
-
-
 
         //sealed Test
         lifecycleScope.launchWhenStarted {
@@ -87,19 +86,18 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
             }
         }
 
+
+
         //팝업테스트
-        supportFragmentManager.beginTransaction().replace(R.id.frag, home()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frag, Home()).commit()
 
         vmBinding.popupbtn.setOnClickListener {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
             popUp.addListener(this)
-            supportFragmentManager.beginTransaction().add(popUp, "gkgk").commitAllowingStateLoss()
+            supportFragmentManager.beginTransaction().add(popUp, "gkgk").commit()
             vmBinding.textbtn.text ="123412412"
-            s.string = vmBinding.textbtn.text.toString()
 
-            Log.d("Awe", "${s} ${vmBinding.test} wq q")
         }
-
 
 
 

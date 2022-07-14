@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest.recyclerview
+package com.example.testapplication.ui.viewmodeltest.recyclerview
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

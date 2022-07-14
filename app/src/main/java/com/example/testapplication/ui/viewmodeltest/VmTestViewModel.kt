@@ -1,34 +1,29 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest
+package com.example.testapplication.ui.viewmodeltest
 
 import android.annotation.SuppressLint
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.testapplication.BuildConfig
+import androidx.lifecycle.*
 import com.example.testapplication.data.DataRepository
 import com.example.testapplication.data.StringTest
 import com.example.testapplication.data.Test
 import com.example.testapplication.data.test2
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
-
-class VmTestViewModel(application : Application) : AndroidViewModel(application) {
+class VmTestViewModel() : ViewModel() {
     @SuppressLint("StaticFieldLeak")
 
-    private val context = getApplication<Application>().applicationContext
 
-    private var t2 : test2 = test2("공유", "바뀜")
+    var t2 : test2 = test2("공유", "바뀜")
 
     private var dataRepo = DataRepository()
 
-    private var _liveData = MutableLiveData(t2)
-    val liveData : LiveData<test2> get() = _liveData
+    private var _testSharedFlow : MutableStateFlow<test2> = MutableStateFlow(t2)
+    val testShareFlow : StateFlow<test2> get() = _testSharedFlow
 
 
     private var _liveDataText : MutableLiveData<Int> = MutableLiveData(0)
@@ -125,13 +120,29 @@ class VmTestViewModel(application : Application) : AndroidViewModel(application)
     }*/
 
     fun bindingTest(s : StringTest) {
-        Log.d("text : ", "${s.string} awwadawdaw")
-        _liveData.value!!.name = "바뀜"
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                _testSharedFlow.emit(test2("ㅁ", "@13213"))
+            }
+        }
     }
 
     fun bindingTest2() {
-        Log.d("text : ",  "awwadawdaw")
-        t2.name = "awdawdawdaw"
-        _liveData.value = t2
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                _testSharedFlow.emit(test2(testShareFlow.value.name +"1", "213"))
+                for( i in 0 until _testSharedFlow.replayCache.size){
+                    Log.d("Replaycash" , "${_testSharedFlow.replayCache.get(i).name} 13")
+                }
+            }
+        }
+    }
+
+    fun bindingTest3() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                _testSharedFlow.emit(test2("초기화", "@13213"))
+            }
+        }
     }
 }

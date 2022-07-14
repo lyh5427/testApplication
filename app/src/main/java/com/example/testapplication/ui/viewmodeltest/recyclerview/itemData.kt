@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest.recyclerview
+package com.example.testapplication.ui.viewmodeltest.recyclerview
 
 class itemData {
     var a : Int = 0

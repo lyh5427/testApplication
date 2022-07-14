@@ -1,4 +1,4 @@
-package com.example.testapplication.ui.viewmodelTest.viewmodeltest
+package com.example.testapplication.ui.viewmodeltest
 
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapplication.data.Test
 import com.example.testapplication.databinding.RecyclerviewtestBinding
-import com.example.testapplication.ui.viewmodelTest.viewmodeltest.RecycleViewTestAdapter.*
+import com.example.testapplication.ui.viewmodeltest.RecycleViewTestAdapter.*
 
 class RecycleViewTestAdapter(private val list : MutableList<Test>)
     : RecyclerView.Adapter<MyViewHolder>() {

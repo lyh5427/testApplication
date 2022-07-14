@@ -7,19 +7,13 @@
     <data>
         <variable
             name="vmTestViewModel"
-            type="com.example.testapplication.ui.viewmodelTest.viewmodeltest.VmTestViewModel" />
-        <variable
-            name="test"
-            type="com.example.testapplication.data.StringTest" />
-
-
-
+            type="com.example.testapplication.ui.viewmodeltest.VmTestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.viewmodelTest.viewmodeltest.VmTest">
+    tools:context=".ui.viewmodeltest.VmTest">
 
         <TextView
             android:id="@+id/tv1"
@@ -47,12 +41,12 @@
 
         <TextView
             android:id="@+id/tv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vmTestViewModel.liveData.name.toString()}"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:text="@{vmTestViewModel.testShareFlow.name.toString()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.352"
+            app:layout_constraintHorizontal_bias="0.768"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.06" />
@@ -145,7 +139,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="binding인자받기 test"
-            android:onClickListener="@{() -> vmTestViewModel.bindingTest(test)}"
             app:layout_constraintBottom_toTopOf="@+id/frag"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/popupbtn"
