@@ -3,10 +3,10 @@ package com.example.testapplication.ui.viewmodeltest
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.testapplication.data.DataRepository
-import com.example.testapplication.data.StringTest
-import com.example.testapplication.data.Test
-import com.example.testapplication.data.test2
+import com.example.testapplication.domain.data.DataRepository
+import com.example.testapplication.domain.data.StringTest
+import com.example.testapplication.domain.data.Test
+import com.example.testapplication.domain.data.test2
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

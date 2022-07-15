@@ -13,8 +13,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentHomeBinding
+import com.example.testapplication.domain.RealmDatabase
 import com.example.testapplication.ui.PopUpDialgoFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,10 +31,11 @@ private const val ARG_PARAM2 = "param2"
  */
 
 
-
 class Home : Fragment(), PopUpDialgoFragment.Dialog2 {
     lateinit var h : FragmentHomeBinding
     private lateinit var callback : OnBackPressedCallback
+
+
     private val vmViewModel : VmTestViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +66,6 @@ class Home : Fragment(), PopUpDialgoFragment.Dialog2 {
         h.button5.setOnClickListener {
             vmViewModel.bindingTest2()
         }
-
-
 
         return h.root
     }
