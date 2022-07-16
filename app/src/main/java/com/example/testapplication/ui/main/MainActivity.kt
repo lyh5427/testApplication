@@ -119,8 +119,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        Aa.getAll()
-        Bb.getAll()
     }
 
     fun isNotificationPermissionAllowed(): Boolean {

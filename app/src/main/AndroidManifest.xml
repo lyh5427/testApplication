@@ -18,7 +18,7 @@
         <activity
             android:name=".ui.motionlayouttest.MotionTestActivity"
             android:exported="false" />
-
+        <!--android:theme="@style/Theme.TestApplication.Transparent"-->
         <service
             android:name=".service.NotificationService"
             android:exported="true"

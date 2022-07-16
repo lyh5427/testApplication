@@ -10,7 +10,7 @@
        <KeyFrameSet>
        </KeyFrameSet>
         <OnSwipe
-            motion:touchAnchorId="@+id/motionBtn"
+            motion:touchAnchorId="@+id/fragmentContainerView"
             motion:dragDirection="dragDown"
             motion:touchAnchorSide="bottom" />
     </Transition>
@@ -21,7 +21,7 @@
     <ConstraintSet android:id="@+id/end">
 
         <Constraint
-            android:id="@+id/motionFrame"
+            android:id="@+id/fragmentContainerView"
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
             motion:layout_constraintBottom_toBottomOf="parent"

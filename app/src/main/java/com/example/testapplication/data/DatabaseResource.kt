@@ -1,6 +1,6 @@
 package com.example.testapplication.data
 
 interface DatabaseResource {
-    fun getAll()
+    fun <T> getAll( a : Class<T> ) : ArrayList<Class<T>>
     fun insert()
 }

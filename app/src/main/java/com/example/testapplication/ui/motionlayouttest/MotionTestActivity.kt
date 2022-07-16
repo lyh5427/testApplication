@@ -15,7 +15,6 @@ class MotionTestActivity : AppCompatActivity() {
         motionBinding = DataBindingUtil.setContentView(this, R.layout.activity_motion_test)
         motionBinding.lifecycleOwner = this
 
-        supportFragmentManager.beginTransaction().add(R.id.motionFrame,MotionFragment()).commit()
 
     }
 }

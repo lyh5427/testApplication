@@ -10,8 +10,9 @@ import javax.inject.Singleton
 @Singleton
 class AaDataBase @Inject constructor(@AA private val aa : Realm) : DatabaseResource {
 
-    override fun getAll() {
+    override fun <T> getAll(a: Class<T>): ArrayList<Class<T>> {
         Log.d("test", "${aa.configuration.realmFileName} BB")
+        return arrayListOf(test2("awd","!32")) as ArrayList<Class<T>>
     }
 
     override fun insert() {
