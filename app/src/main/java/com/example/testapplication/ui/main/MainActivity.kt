@@ -18,19 +18,17 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
-import com.example.testapplication.BuildConfig
 import com.example.testapplication.R
+import com.example.testapplication.data.DatabaseResource
 import com.example.testapplication.databinding.ActivityMainBinding
-import com.example.testapplication.domain.RealmDatabase
+import com.example.testapplication.domain.module.*
 import com.example.testapplication.ui.appwebtest.PageTest
 import com.example.testapplication.ui.sharetest.ShareTest
 import com.example.testapplication.ui.ViewBindingActivity
+import com.example.testapplication.ui.motionlayouttest.MotionTestActivity
 import com.example.testapplication.ui.viewmodeltest.VmTest
 import dagger.hilt.android.AndroidEntryPoint
-import io.realm.Realm
-import io.realm.RealmModel
 import io.realm.RealmObject
-import io.realm.Sort
 import javax.inject.Inject
 
 open class aaa : RealmObject(){
@@ -46,7 +44,11 @@ class MainActivity : AppCompatActivity() {
     var IncallView : View? = null
     lateinit var conOverlay : ConstraintLayout
 
-    @Inject lateinit var s : Realm
+    @Aadata
+    @Inject lateinit var Aa : DatabaseResource
+
+    @BbData
+    @Inject lateinit var Bb : DatabaseResource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,24 +113,14 @@ class MainActivity : AppCompatActivity() {
         if(!isNotificationPermissionAllowed()){
             startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
         }
-        if(BuildConfig.DEBUG){
-            Log.d("21321","@1312")
+
+        mainBinding.bottomSheetTest.setOnClickListener {
+            val intent = Intent(this,MotionTestActivity::class.java)
+            startActivity(intent)
         }
-        else {
-            Log.d("ㅁㅈㅇㅁㅈ","ㅁㅈㅇㅁㅈㅇ")
-        }
 
-        //realm Test
-        s.beginTransaction()
-        var realmtest = s.createObject(aaa::class.java)
-        realmtest.a = "되냐?"
-        realmtest.s = "되네"
-        s.commitTransaction()
-
-        val result = s.where(aaa::class.java).sort("a", Sort.DESCENDING).findAll()
-        mainBinding.realmTest.text = "${result[0]!!.a}  ${result[0]!!.s}"
-        Log.d("realm 주소 ", " ${s.toString()}")
-
+        Aa.getAll()
+        Bb.getAll()
     }
 
     fun isNotificationPermissionAllowed(): Boolean {

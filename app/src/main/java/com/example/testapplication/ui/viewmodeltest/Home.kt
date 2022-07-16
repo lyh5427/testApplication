@@ -21,8 +21,6 @@ import javax.inject.Inject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -31,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  */
 
 
-class Home : Fragment(), PopUpDialgoFragment.Dialog2 {
+class Home() : PopUpDialgoFragment.Dialog2 , Fragment() {
     lateinit var h : FragmentHomeBinding
     private lateinit var callback : OnBackPressedCallback
 
@@ -53,7 +51,6 @@ class Home : Fragment(), PopUpDialgoFragment.Dialog2 {
 
         h.button3.setOnClickListener {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
-            popUp.addListener(this)
             childFragmentManager.beginTransaction().add(popUp,"awd").commit()
         }
 
@@ -91,23 +88,13 @@ class Home : Fragment(), PopUpDialgoFragment.Dialog2 {
     }
 
     override fun cancel() {
-        Log.d("popupTest", "2222222222222")
+        Log.d("popupTest", "Fragment")
 
     }
 
     override fun ok() {
 
-        Log.d("popupTest", "1111111111111")
-    }
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        Log.d("popupTest", "Fragment")
     }
 
     fun test(){

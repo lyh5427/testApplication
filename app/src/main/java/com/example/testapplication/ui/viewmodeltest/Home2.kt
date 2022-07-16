@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentHome2Binding
+import com.example.testapplication.ui.PopUpDialgoFragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +25,7 @@ class home2 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
 
     lateinit var h2 : FragmentHome2Binding
     private val vm2 : VmTestViewModel by activityViewModels()

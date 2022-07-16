@@ -1,4 +1,4 @@
-package com.example.testapplication.domain.data
+package com.example.testapplication.data
 
 
 data class Test(

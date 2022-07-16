@@ -1,4 +1,4 @@
-package com.example.testapplication.domain.data
+package com.example.testapplication.data
 
 import com.example.testapplication.ui.viewmodeltest.Event
 import kotlinx.coroutines.Dispatchers

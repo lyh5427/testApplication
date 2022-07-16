@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testapplication.domain.data.Test
+import com.example.testapplication.data.Test
 import com.example.testapplication.databinding.RecyclerviewtestBinding
 import com.example.testapplication.ui.viewmodeltest.RecycleViewTestAdapter.*
 

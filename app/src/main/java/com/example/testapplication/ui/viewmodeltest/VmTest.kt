@@ -13,7 +13,7 @@ import com.example.testapplication.ui.PopUpDialgoFragment
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 
-class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
+class VmTest() : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
     private lateinit var vmBinding : ActivityVmTestBinding
     private val model : VmTestViewModel by viewModels()
 
@@ -55,7 +55,6 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
             delay(5000)
             model.stateFlow.collectLatest {
                 Log.d("b", "StateFlow : $it")
-
             }
         }
 
@@ -93,7 +92,7 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
 
         vmBinding.popupbtn.setOnClickListener {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
-            popUp.addListener(this)
+
             supportFragmentManager.beginTransaction().add(popUp, "gkgk").commit()
             vmBinding.textbtn.text ="123412412"
 
@@ -105,12 +104,12 @@ class VmTest : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
     }
 
     override fun cancel() {
-        Log.d("popupTest", "2222222222222")
+        Log.d("popupTest", "MainActivity")
 
     }
 
     override fun ok() {
 
-        Log.d("popupTest", "1111111111111")
+        Log.d("popupTest", "MainActivity")
     }
 }
