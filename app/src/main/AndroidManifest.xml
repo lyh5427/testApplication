@@ -16,9 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".motiontest2.MotionTest2"
+            android:exported="false" />
+        <activity
             android:name=".ui.motionlayouttest.MotionTestActivity"
             android:exported="false" />
-        <!--android:theme="@style/Theme.TestApplication.Transparent"-->
+
         <service
             android:name=".service.NotificationService"
             android:exported="true"

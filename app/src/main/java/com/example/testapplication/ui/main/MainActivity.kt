@@ -22,6 +22,7 @@ import com.example.testapplication.R
 import com.example.testapplication.data.DatabaseResource
 import com.example.testapplication.databinding.ActivityMainBinding
 import com.example.testapplication.domain.module.*
+import com.example.testapplication.motiontest2.MotionTest2
 import com.example.testapplication.ui.appwebtest.PageTest
 import com.example.testapplication.ui.sharetest.ShareTest
 import com.example.testapplication.ui.ViewBindingActivity
