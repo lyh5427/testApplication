@@ -27,6 +27,7 @@ import com.example.testapplication.ui.appwebtest.PageTest
 import com.example.testapplication.ui.sharetest.ShareTest
 import com.example.testapplication.ui.ViewBindingActivity
 import com.example.testapplication.ui.motionlayouttest.MotionTestActivity
+import com.example.testapplication.ui.rippletest.RippleTestActivity
 import com.example.testapplication.ui.viewmodeltest.VmTest
 import dagger.hilt.android.AndroidEntryPoint
 import io.realm.RealmObject
@@ -117,6 +118,12 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.bottomSheetTest.setOnClickListener {
             val intent = Intent(this,MotionTestActivity::class.java)
+            startActivity(intent)
+        }
+
+        //리플 테스트
+        mainBinding.ripple.setOnClickListener {
+            val intent = Intent(this, RippleTestActivity::class.java)
             startActivity(intent)
         }
 

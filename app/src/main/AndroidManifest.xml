@@ -15,6 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
+
+        <activity
+            android:name=".ui.rippletest.RippleTestActivity"
+            android:exported="false" />
         <activity
             android:name=".motiontest2.MotionTest2"
             android:exported="false" />

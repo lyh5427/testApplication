@@ -32,8 +32,10 @@ class PageTest : AppCompatActivity() {
     }
 
     private fun setViewPager(viewPager: ViewPager) {
-        val a = webView.newInstance("1", "https://www.google.com")
+        val a = webView.newInstance("1", "https://www.antiscam.co.kr/terms/used")
         val b = webView.newInstance("1", "https://www.google.com")
+
+
 
         val adapter = PagerTestAdapter(supportFragmentManager)
         adapter.addFrag(a,"최신피싱사례")
