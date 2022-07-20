@@ -34,9 +34,11 @@ class webView : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val inflate = inflater.inflate(R.layout.fragment_web_view, container, false)
         val webview = inflate.findViewById<WebView>(R.id.web)
+
         webview.webViewClient = WebViewClient()
         webview.loadUrl(param2.toString())
 
+        webview.settings.javaScriptEnabled = true
         return inflate
     }
 

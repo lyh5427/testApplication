@@ -23,6 +23,7 @@
             android:name=".motiontest2.MotionTest2"
             android:exported="false" />
         <activity
+            android:theme="@android:style/Theme.Translucent"
             android:name=".ui.motionlayouttest.MotionTestActivity"
             android:exported="false" />
 
