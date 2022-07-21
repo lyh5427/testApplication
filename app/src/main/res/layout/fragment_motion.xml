@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/fragment_motion_xml_framelayout_scene"
-        tools:context=".ui.motionlayouttest.MotionFragment">
+        tools:context=".ui.motionlayouttest.MotionFragment"
+        android:background="#11ffffff">
 
 
         <Button
@@ -26,7 +27,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="665dp"
-            android:background="@color/white"
+            android:background="@drawable/motiondesign"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -62,10 +63,10 @@
                 android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.986"
+                app:layout_constraintHorizontal_bias="0.929"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.024" />
+                app:layout_constraintVertical_bias="0.026" />
 
             <Button
                 android:id="@+id/button8"

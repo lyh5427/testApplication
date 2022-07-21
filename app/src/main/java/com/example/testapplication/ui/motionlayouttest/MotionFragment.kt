@@ -1,6 +1,7 @@
 package com.example.testapplication.ui.motionlayouttest
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import java.lang.Math.abs
 
 class MotionFragment : Fragment() {
     lateinit var motionfBinding : FragmentMotionBinding
+    var f = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -23,25 +25,31 @@ class MotionFragment : Fragment() {
         motionfBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_motion, container, false)
 
         motionfBinding.frameLayout.transitionToEnd()
-        return motionfBinding.root
-    }
-    private fun initMotionLayoutEvent(fragmentPlayerBinding: FragmentMotionBinding) {
-        fragmentPlayerBinding.frameLayout.setTransitionListener(object : MotionLayout.TransitionListener {
-            override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {}
+        motionfBinding.frameLayout.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
+                Log.d("aaaaaaaaaaaaa", "${motionfBinding.frameLayout.progress} aaaa")
+            }
 
             override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
-                motionfBinding?.let {
-                    (activity as MotionTestActivity).also { mainActivity ->
-                        // mainActivity 로 치환해서 형변환
-                        mainActivity.findViewById<MotionLayout>(R.id.constraintLayout2).progress = abs(progress)
-                    }
+                if(motionfBinding.frameLayout.progress ==0f){
+                    f=true
                 }
             }
 
-            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {}
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
 
-            override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {}
+                Log.d("ccccccccc", "${motionfBinding.frameLayout.progress} aaaa")
+                if(motionfBinding.frameLayout.progress == 1f && f){
+                    requireActivity().finish()
+                }
+            }
+
+            override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerId: Int, positive: Boolean, progress: Float) {
+
+            }
         })
+
+        return motionfBinding.root
     }
 
 }

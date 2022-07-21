@@ -6,8 +6,10 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1000">
+        motion:duration="1000"
+        motion:autoTransition="animateToStart">
        <KeyFrameSet>
+
        </KeyFrameSet>
         <OnSwipe
             motion:touchAnchorId="@+id/button9"
@@ -17,12 +19,10 @@
 
     <ConstraintSet android:id="@+id/start">
 
-
     </ConstraintSet>
 
 
     <ConstraintSet android:id="@+id/end">
-
         <Constraint
             android:id="@+id/button9"
             android:visibility="invisible"
