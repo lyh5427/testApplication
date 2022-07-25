@@ -42,6 +42,4 @@ object RealmModule{
             .deleteRealmIfMigrationNeeded()
             .build())
     }
-
-
 }

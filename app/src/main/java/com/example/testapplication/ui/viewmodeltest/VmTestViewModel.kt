@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 
 
 class VmTestViewModel() : ViewModel() {
-    @SuppressLint("StaticFieldLeak")
 
 
     var t2 : test2 = test2("공유", "바뀜")

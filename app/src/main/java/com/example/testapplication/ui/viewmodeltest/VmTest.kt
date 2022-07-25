@@ -1,5 +1,6 @@
 package com.example.testapplication.ui.viewmodeltest
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
