@@ -2,24 +2,25 @@ package com.example.testapplication.ui.viewmodeltest
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.example.testapplication.data.DataRepository
-import com.example.testapplication.data.StringTest
-import com.example.testapplication.data.Test
-import com.example.testapplication.data.test2
+import com.example.testapplication.data.*
+import com.example.testapplication.domain.module.BbData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-
-class VmTestViewModel() : ViewModel() {
-
+@HiltViewModel
+class VmTestViewModel @Inject constructor(private val repo : DataRepositorySource) : ViewModel() {
 
     var t2 : test2 = test2("공유", "바뀜")
 
     private var dataRepo = DataRepository()
+
 
     private var _testSharedFlow : MutableStateFlow<test2> = MutableStateFlow(t2)
     val testShareFlow : StateFlow<test2> get() = _testSharedFlow

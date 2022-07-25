@@ -11,9 +11,11 @@ import com.example.testapplication.databinding.ActivityVmTestBinding
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.testapplication.ui.PopUpDialgoFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 
+@AndroidEntryPoint
 class VmTest() : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
     private lateinit var vmBinding : ActivityVmTestBinding
     private val model : VmTestViewModel by viewModels()
