@@ -14,10 +14,18 @@ import android.view.View
 import android.view.WindowManager
 import android.webkit.WebViewClient
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.example.testapplication.R
 import com.example.testapplication.data.DatabaseResource
 import com.example.testapplication.databinding.ActivityMainBinding
@@ -31,6 +39,7 @@ import com.example.testapplication.ui.rippletest.RippleTestActivity
 import com.example.testapplication.ui.viewmodeltest.VmTest
 import dagger.hilt.android.AndroidEntryPoint
 import io.realm.RealmObject
+import java.util.jar.Manifest
 import javax.inject.Inject
 
 open class aaa : RealmObject(){
@@ -44,8 +53,37 @@ open class aaa : RealmObject(){
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding : ActivityMainBinding
     var IncallView : View? = null
-    lateinit var conOverlay : ConstraintLayout
+    lateinit var permissionResult : ActivityResultLauncher<String>
+    lateinit var permissionContract : ActivityResultContract<String, String>
 
+    @Suppress("IMPLICIT_CAST_TO_ANY")
+    val permissionList  = when {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> {
+            arrayListOf(
+                android.Manifest.permission.READ_PHONE_STATE,
+                android.Manifest.permission.READ_CALL_LOG,
+                android.Manifest.permission.READ_PHONE_NUMBERS,
+                android.Manifest.permission.READ_CONTACTS
+            )
+        }
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
+            arrayListOf(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.READ_PHONE_STATE,
+                android.Manifest.permission.READ_CALL_LOG,
+                android.Manifest.permission.READ_CONTACTS,
+            )
+        }
+        else -> {
+            arrayListOf(
+            )
+        }
+    }
+    private var permCode : Int = permissionList.size-1
+
+    fun PermissionCheckStart(){
+        permissionResult.launch(permissionList[permCode])
+    }
     @Aadata
     @Inject lateinit var Aa : DatabaseResource
 
@@ -56,6 +94,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
+
+        //ActivityResultLaunch test
+        permissionResult = registerForActivityResult(ActivityResultContracts.RequestPermission()){
+            if(it){
+                permCode -= 1
+                if(permCode >= 0){
+                    permissionResult.launch(permissionList[permCode])
+                }
+            }
+            else{
+                permissionResult.launch(permissionList[permCode])
+            }
+        }
+
+        PermissionCheckStart()
         //공유하기
         mainBinding.sharebtn.setOnClickListener{
             intent = Intent(this, ShareTest::class.java)
@@ -127,6 +180,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
+
+
+
+
     }
 
     fun isNotificationPermissionAllowed(): Boolean {
@@ -158,6 +217,8 @@ class MainActivity : AppCompatActivity() {
         params.y = 0
         IncallView = LayoutInflater.from(this).inflate(R.layout.overlay_test,null)
         IncallView!!.visibility = View.GONE
+        val s = IncallView!!.findViewById<ImageView>(R.id.gifTest2)
+        Glide.with(this).load(R.drawable.giftesta).into(s)
 
         val windowManager = this.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         windowManager.addView(IncallView, params)

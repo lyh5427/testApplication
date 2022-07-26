@@ -8,12 +8,12 @@ import android.util.Log
 class NotificationService : NotificationListenerService() {
     override fun onListenerConnected() {
         super.onListenerConnected()
-        Log.e("kobbi","MyNotificationListener.onListenerConnected()")
+        //Log.e("kobbi","MyNotificationListener.onListenerConnected()")
     }
 
     override fun onListenerDisconnected() {
         super.onListenerDisconnected()
-        Log.e("kobbi","MyNotificationListener.onListenerDisconnected()")
+        //Log.e("kobbi","MyNotificationListener.onListenerDisconnected()")
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
