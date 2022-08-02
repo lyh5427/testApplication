@@ -38,8 +38,8 @@ class PageTest : AppCompatActivity() {
 
 
         val adapter = PagerTestAdapter(supportFragmentManager)
-        adapter.addFrag(a,"최신피싱사례")
-        adapter.addFrag(b,"주요피싱사례")
+        adapter.addFrag(a,"")
+        adapter.addFrag(b,"")
 
         viewPager.adapter = adapter
 

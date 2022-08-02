@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bentley_smartSetting">#3DC289</color>
     <color name="bentley_background">#D7D7D7</color>
-    <color name="bentley_actionbar">#D7D7D7</color>
+    <color name="bentley_actionbar">#ff0f0fff</color>
 
     <drawable name="translucent_background">#e0000000</drawable>
     <drawable name="transparent_background">#00000000</drawable>
