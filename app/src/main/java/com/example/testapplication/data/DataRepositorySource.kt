@@ -8,4 +8,8 @@ interface DataRepositorySource {
     fun count() : Flow<Any>
 
     fun sealedTest( a : Int) : Event
+
+    fun c() : Int{
+        return 1
+    }
 }

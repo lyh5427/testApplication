@@ -1,11 +1,9 @@
 package com.example.testapplication.ui.viewmodeltest
 
-import android.annotation.SuppressLint
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.testapplication.data.*
-import com.example.testapplication.domain.module.BbData
+import com.example.testapplication.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -15,7 +13,10 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class VmTestViewModel @Inject constructor(private val repo : DataRepositorySource) : ViewModel() {
+class VmTestViewModel @Inject constructor( val repo : DataRepositorySource) : BaseViewModel(repo) {
+
+    //test 지워도 됨
+    val s = repo.c()
 
     var t2 : test2 = test2("공유", "바뀜")
 
@@ -60,6 +61,7 @@ class VmTestViewModel @Inject constructor(private val repo : DataRepositorySourc
             Test(6, " 6입니다.")
         )
         _title.value = items
+        Log.d("힐트", "$s 성공")
     }
     //sealed test
    fun sealedTest(){

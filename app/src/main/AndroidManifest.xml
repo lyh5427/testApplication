@@ -7,9 +7,10 @@
     <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
@@ -23,7 +24,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
+        <service
+            android:name=".service.Accesibility"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice" />
+        </service>
 
+        <activity
+            android:name=".ui.base.BaseActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.rippletest.RippleTestActivity"
             android:exported="false" />
@@ -31,9 +47,9 @@
             android:name=".motiontest2.MotionTest2"
             android:exported="false" />
         <activity
-            android:theme="@style/Theme.Transparent"
             android:name=".ui.motionlayouttest.MotionTestActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Transparent" />
 
         <service
             android:name=".service.NotificationService"

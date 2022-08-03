@@ -1,46 +1,46 @@
 package com.example.testapplication.ui.main
 
+import android.accessibilityservice.AccessibilityServiceInfo
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
+import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
+import android.view.accessibility.AccessibilityManager
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityOptionsCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.example.testapplication.R
 import com.example.testapplication.data.DatabaseResource
 import com.example.testapplication.databinding.ActivityMainBinding
-import com.example.testapplication.domain.module.*
-import com.example.testapplication.motiontest2.MotionTest2
-import com.example.testapplication.ui.appwebtest.PageTest
-import com.example.testapplication.ui.sharetest.ShareTest
+import com.example.testapplication.domain.module.Aadata
+import com.example.testapplication.domain.module.BbData
 import com.example.testapplication.ui.ViewBindingActivity
+import com.example.testapplication.ui.appwebtest.PageTest
 import com.example.testapplication.ui.motionlayouttest.MotionTestActivity
 import com.example.testapplication.ui.rippletest.RippleTestActivity
+import com.example.testapplication.ui.sharetest.ShareTest
 import com.example.testapplication.ui.viewmodeltest.VmTest
 import dagger.hilt.android.AndroidEntryPoint
 import io.realm.RealmObject
-import java.util.jar.Manifest
 import javax.inject.Inject
+
 
 open class aaa : RealmObject(){
 
@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     var IncallView : View? = null
     lateinit var permissionResult : ActivityResultLauncher<String>
     lateinit var permissionContract : ActivityResultContract<String, String>
+    lateinit var overlayPermissionResult : ActivityResultLauncher<Intent>
+    lateinit var APermissionResult : ActivityResultLauncher<Intent>
 
     @Suppress("IMPLICIT_CAST_TO_ANY")
     val permissionList  = when {
@@ -82,8 +84,38 @@ class MainActivity : AppCompatActivity() {
     private var permCode : Int = permissionList.size-1
 
     fun PermissionCheckStart(){
-        permissionResult.launch(permissionList[permCode])
+        for( permission in permissionList){
+            permissionResult.launch(permission)
+        }
     }
+    fun getOverlayPermission(){//오버레이 권한 받기
+        if (Build.VERSION.SDK_INT >= 23) {
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${packageName}"))
+            overlayPermissionResult.launch(intent)
+        }
+    }
+
+    fun getAcPermission(){
+        val intent2 = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+        overlayPermissionResult.launch(intent2)
+    }
+
+    fun checkAccessibilityPermissions(): Boolean {
+        val accessibilityManager = getSystemService(ACCESSIBILITY_SERVICE) as AccessibilityManager
+
+        // getEnabledAccessibilityServiceList는 현재 접근성 권한을 가진 리스트를 가져오게 된다
+        val list = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.DEFAULT)
+        for (i in list.indices) {
+            val info = list[i]
+
+            // 접근성 권한을 가진 앱의 패키지 네임과 패키지 네임이 같으면 현재앱이 접근성 권한을 가지고 있다고 판단함
+            if (info.resolveInfo.serviceInfo.packageName == application.packageName) {
+                return true
+            }
+        }
+        return false
+    }
+
     @Aadata
     @Inject lateinit var Aa : DatabaseResource
 
@@ -94,21 +126,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
+        overlayPermissionResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            val overlayPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Settings.canDrawOverlays(this)
+            } else {
+                true
+            }
 
-        //ActivityResultLaunch test
-        permissionResult = registerForActivityResult(ActivityResultContracts.RequestPermission()){
-            if(it){
-                permCode -= 1
-                if(permCode >= 0){
-                    permissionResult.launch(permissionList[permCode])
-                }
+            if(!overlayPermission){//오버레이 권한 없을 때
+                getOverlayPermission()
             }
             else{
-                permissionResult.launch(permissionList[permCode])
+                overlaySet()
+            }
+        }
+        //ActivityResultLaunch test
+        permissionResult = registerForActivityResult(ActivityResultContracts.RequestPermission()){
+
+        }
+
+        APermissionResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+
+            if(!checkAccessibilityPermissions()){//오버레이 권한 없을 때
+                getAcPermission()
             }
         }
 
+        /*if(!checkAccessibilityPermissions()){
+            getAcPermission()
+        }*/
         PermissionCheckStart()
+        //getOverlayPermission()
         //공유하기
         mainBinding.sharebtn.setOnClickListener{
             intent = Intent(this, ShareTest::class.java)
@@ -133,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //오버레이
-        overlaySet()
+        //overlaySet()
         mainBinding.overlayTest.setOnClickListener {
             if(IncallView!!.visibility == View.GONE){
                 IncallView!!.visibility = View.VISIBLE
