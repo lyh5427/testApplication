@@ -226,14 +226,7 @@ class MainActivity : AppCompatActivity() {
         mainBinding.ripple.setOnClickListener {
             val intent = Intent(this, RippleTestActivity::class.java)
             startActivity(intent)
-        }
-
-
-
-
-
-
-
+        }git
     }
 
     fun isNotificationPermissionAllowed(): Boolean {
