@@ -41,6 +41,7 @@ class PopUpDialgoFragment : DialogFragment() {
             title = it.getString("title")
             param2 = it.getInt(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,6 +49,7 @@ class PopUpDialgoFragment : DialogFragment() {
             binding = FragmentPopUpDialgoBinding.inflate(inflater, container, false)
             dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             binding.textView11.setOnClickListener{
+
                 listener!!.cancel()
                 dismiss()
             }

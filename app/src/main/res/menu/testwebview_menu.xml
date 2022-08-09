@@ -12,6 +12,4 @@
         android:id="@+id/recentFishing"
         android:title="최근피싱"
         android:enabled="true" />
-
-
 </menu>

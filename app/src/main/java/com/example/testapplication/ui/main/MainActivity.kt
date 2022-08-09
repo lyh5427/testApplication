@@ -25,14 +25,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.example.testapplication.R
 import com.example.testapplication.data.DatabaseResource
 import com.example.testapplication.databinding.ActivityMainBinding
 import com.example.testapplication.domain.module.Aadata
 import com.example.testapplication.domain.module.BbData
+import com.example.testapplication.motiontest2.MotionTest2
 import com.example.testapplication.ui.ViewBindingActivity
 import com.example.testapplication.ui.appwebtest.PageTest
+import com.example.testapplication.ui.motionlayouttest.MotionFragment
 import com.example.testapplication.ui.motionlayouttest.MotionTestActivity
 import com.example.testapplication.ui.rippletest.RippleTestActivity
 import com.example.testapplication.ui.sharetest.ShareTest
@@ -51,7 +55,7 @@ open class aaa : RealmObject(){
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var mainBinding : ActivityMainBinding
+    lateinit var mainBinding : ActivityMainBinding
     var IncallView : View? = null
     lateinit var permissionResult : ActivityResultLauncher<String>
     lateinit var permissionContract : ActivityResultContract<String, String>
@@ -226,7 +230,16 @@ class MainActivity : AppCompatActivity() {
         mainBinding.ripple.setOnClickListener {
             val intent = Intent(this, RippleTestActivity::class.java)
             startActivity(intent)
-        }git
+        }
+
+    }
+
+    fun removeFragment(fragment : Fragment){
+        val mFragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        mFragmentTransaction.remove(fragment)
+        mFragmentTransaction.commit()
+        fragment.onDestroy()
+        fragment.onDetach()
     }
 
     fun isNotificationPermissionAllowed(): Boolean {

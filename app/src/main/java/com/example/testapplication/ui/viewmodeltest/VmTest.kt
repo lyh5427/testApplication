@@ -95,6 +95,7 @@ class VmTest() : AppCompatActivity(), PopUpDialgoFragment.Dialog2 {
 
         vmBinding.popupbtn.setOnClickListener {
             val popUp = PopUpDialgoFragment.newInstance("dididididididididi", 1)
+            popUp.isCancelable = false
 
             supportFragmentManager.beginTransaction().add(popUp, "gkgk").commit()
             vmBinding.textbtn.text ="123412412"

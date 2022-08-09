@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import com.example.testapplication.R
 import com.example.testapplication.databinding.FragmentMotionBinding
 import java.lang.Math.abs
@@ -23,6 +24,7 @@ class MotionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         motionfBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_motion, container, false)
+        motionfBinding.lifecycleOwner=this
 
         motionfBinding.frameLayout.transitionToEnd()
         motionfBinding.frameLayout.setTransitionListener(object : MotionLayout.TransitionListener {
@@ -40,7 +42,7 @@ class MotionFragment : Fragment() {
 
                 Log.d("ccccccccc", "${motionfBinding.frameLayout.progress} aaaa")
                 if(motionfBinding.frameLayout.progress == 1f && f){
-                    requireActivity().finish()
+                    requireActivity().supportFragmentManager.beginTransaction().remove(MotionFragment()).commit()
                 }
             }
 
@@ -51,5 +53,4 @@ class MotionFragment : Fragment() {
 
         return motionfBinding.root
     }
-
 }
