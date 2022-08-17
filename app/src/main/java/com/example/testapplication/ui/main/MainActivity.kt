@@ -130,6 +130,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
+
+        mainBinding.testCon.setOnClickListener {
+            Log.d("레이아웃", "먼저?")
+        }
+
         overlayPermissionResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             val overlayPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 Settings.canDrawOverlays(this)
