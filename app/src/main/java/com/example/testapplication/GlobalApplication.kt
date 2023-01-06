@@ -10,7 +10,7 @@ class GlobalApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-
+          //aaa
         Realm.init(this)
     }
 }
