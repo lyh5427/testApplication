@@ -8,7 +8,7 @@ import android.content.Intent.EXTRA_CHOSEN_COMPONENT
 import android.util.Log
 
 class BroadCastReceiver : BroadcastReceiver() {
-
+       //aa
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         val c : ComponentName = intent.getParcelableExtra(EXTRA_CHOSEN_COMPONENT)!!
